@@ -9,10 +9,9 @@ export const loginUser = (identifier, password)=>async(dispatch)=>{
          dispatch(loginRequest());
          const config={withCredentials:true, headers:{'Content-Type':'application/json'}}
 
-         const data = await axios.post('/api/v1/users/login',{identifier ,password}, config);
+         const {data} = await axios.post('/api/v1/users/login',{identifier ,password}, config);
            
-         ;
-         dispatch(loginSuccess(data.data.data.user));
+         dispatch(loginSuccess(data.data.user));
 
     } catch (error) {
         console.log("ERROR IN LOGIN USERAPI.JS FILE----", error);
