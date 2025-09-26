@@ -13,7 +13,7 @@ function EditComment({commentData, setIsEdit}) {
           setLoading(true);
           const config = {withCredentials:true, headers:{'Content-Type':'application/json'}}
           
-          const {data} = await axios.patch(`/api/v1/comment/c/${commentData.video}/comment/${commentData._id}`, {updatedComment:comment}, config);
+          const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/comment/c/${commentData.video}/comment/${commentData._id}`, {updatedComment:comment}, config);
           if(data){
             setIsEdit(false);
             setLoading(false);

@@ -73,7 +73,7 @@ function CreateVideo() {
     
     const config = {withCredentials:true, headers:{'Content-Type':'multipart/form-data'}};
 
-    const {data} = await axios.post("/api/v1/videos/upload-video", formData, config);
+    const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/videos/upload-video`, formData, config);
 
     if(data.data){
         setVideoLoading(false);

@@ -24,7 +24,7 @@ function UpdatePassword({setIsUpdatePassword}) {
 
 
         const config = {withCredentials:true, headers:{'Content-Type':'application/json'}};
-        const {data} = await axios.patch("/api/v1/users/update-password", {oldPassword, newPassword}, config);
+        const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/users/update-password`, {oldPassword, newPassword}, config);
         setIsUpdatePassword(false);
             } catch (error) {
 

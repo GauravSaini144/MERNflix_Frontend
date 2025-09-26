@@ -9,7 +9,7 @@ export const loginUser = (identifier, password)=>async(dispatch)=>{
          dispatch(loginRequest());
          const config={withCredentials:true, headers:{'Content-Type':'application/json'}}
 
-         const {data} = await axios.post('/api/v1/users/login',{identifier ,password}, config);
+         const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/login`,{identifier ,password}, config);
            
          dispatch(loginSuccess(data.data.user));
 
@@ -24,7 +24,7 @@ export const logoutUser = ()=>async(dispatch)=>{
          dispatch(logoutUserRequest());
          const config={withCredentials:true, headers:{'Content-Type':'application/json'}}
 
-        const {data} = await axios.post("/api/v1/users/logout", config);
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/logout`, config);
          dispatch(logoutUserSuccess());
     } catch (error) {
         console.log(error);
@@ -36,7 +36,7 @@ export const getCurrentUser = () => async(dispatch)=>{
     try {
         dispatch(getCurrentUserRequest());
         const config={withCredentials:true, headers:{'Content-Type':'application/json'}}
-        const {data} = await axios.get("/api/v1/users/get-user",config);
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/get-user`,config);
         
         dispatch(getCurrentUserSuccess(data.data.user));
         
@@ -58,7 +58,7 @@ export const refreshToken = ()=>async(dispatch)=>{
         dispatch(refreshTokenRequest());
         const config = {withCredentials:true, headers:{'Content-Type':'application/json'}};
 
-        const {data} = await axios.post("/api/v1/users/refresh-token",{}, config);
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/refresh-token`,{}, config);
         dispatch(refreshTokenSuccess(data));
         
     } catch (error) {

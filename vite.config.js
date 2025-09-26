@@ -5,9 +5,9 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   server:{
-   proxy:{
-    '/api':'https://mernflix-backend-r5l8.onrender.com/'
-   }
+  //  proxy:{
+  //   '/api':'https://mernflix-backend-r5l8.onrender.com'
+  //  }
   },
   plugins: [react(), tailwindcss()],
 })

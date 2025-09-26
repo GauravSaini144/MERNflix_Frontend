@@ -21,7 +21,7 @@ function UpdateProfile({setOpenEditProfile, user, setIsUpdated}) {
        setError("");
       const config = {withCredentials:true, headers:{'Content-Type':'application/json'}}
       
-      const {data} = await axios.patch("/api/v1/users/update-user",{fullname, email}, config);
+      const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/users/update-user`,{fullname, email}, config);
 
       setIsUpdated((prev)=>!prev);
       setOpenEditProfile(false);

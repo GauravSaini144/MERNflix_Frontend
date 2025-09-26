@@ -16,7 +16,7 @@ function History() {
        const getHistoryVideos =async()=>{
         try {
           setVideoLoading(true);
-           const {data} = await axios.get("/api/v1/history/videos");
+           const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/history/videos`);
            
            setVideos(data.data);
            setVideoLoading(false);

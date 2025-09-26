@@ -7,7 +7,7 @@ export const getFeedVideos = () =>async(dispatch)=>{
     try {
         const config = {withCredentials:true, headers:{'Content-Type':'application/json'}}
         dispatch(getVideosRequest());
-        const {data} = await axios.get("/api/v1/videos/all", config);
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/videos/all`, config);
         dispatch(getVideosSuccess(data.data.videos));
         
     } catch (error) {
@@ -20,7 +20,7 @@ export const getFeedVideos = () =>async(dispatch)=>{
 export const getSearchVideo = (search) =>async(dispatch)=>{
     try {
         dispatch(getVideosRequest());
-        const {data} = await axios.get(`/api/v1/videos/videos?query=${search}`);
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/videos/videos?query=${search}`);
       dispatch(getVideosSuccess(data.data));
         
         

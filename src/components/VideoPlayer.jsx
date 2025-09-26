@@ -45,7 +45,7 @@ function VideoPlayer() {
         
         
         try {
-            const {data} = await axios.get(`/api/v1/videos/video/${videoId}`);
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/videos/video/${videoId}`);
             
             setVideo(data.data[0]);
             
@@ -73,8 +73,8 @@ function VideoPlayer() {
           
 
           const config = {withCredentials:true, headers:{'Content-Type':'application/json'}}
-          const {data} = await axios.post(`/api/v1/views/views/${videoId}`,{}, config); 
-          const {data:historyData} = await axios.post(`/api/v1/history/${videoId}`,{}, config);
+          const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/views/views/${videoId}`,{}, config); 
+          const {data:historyData} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/history/${videoId}`,{}, config);
           
         } catch (error) {
           console.log("error while adding view or history of this video", error);
@@ -95,7 +95,7 @@ function VideoPlayer() {
       
     try {
  
-      const {data} = await axios.get(`/api/v1/comment/c/${videoId}`);
+      const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/comment/c/${videoId}`);
       setCommentsArray(data.data);
 
     } catch (error) {
@@ -123,7 +123,7 @@ function VideoPlayer() {
          else if(isSubscribe===true){
           setIsSubscribe(false);
          }
-        const {data} = await axios.post(`/api/v1/subscription/subscribe/${video.owner._id}`);
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${video.owner._id}`);
         
       } catch (error) {
         
@@ -140,7 +140,7 @@ function VideoPlayer() {
        const config = {withCredentials:true,headers:{'Content-Type':'application/json'}};
        
        setCommentLoading(true);
-       const {data} = await axios.post(`/api/v1/comment/c/${videoId}`, {comment}, config);
+       const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/comment/c/${videoId}`, {comment}, config);
        if(data.data){
        setComment("");
        setCommentLoading(false);
@@ -158,7 +158,7 @@ function VideoPlayer() {
       try {
         setCommentDelete(true);
         const config ={withCredentials:true, headers:{'Content-Type':'application/json'}};
-         const {data} = await axios.delete(`/api/v1/comment/c/${videoId}/comment/${commentId}`, config);
+         const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/comment/c/${videoId}/comment/${commentId}`, config);
          setCommentDelete(false);
       } catch (error) {
         console.log("error while deleting comment", error);

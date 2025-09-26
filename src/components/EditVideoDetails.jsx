@@ -41,7 +41,7 @@ function EditVideoDetails({video ,setIsEdit}) {
       try {
         setLoading(true);
         const config = {withCredentials:true, headers:{'Content-Type':'multipart/form-data'}};
-        const {data} = await axios.patch(`/api/v1/videos/update-video/${video._id}`, formData, config);
+        const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/videos/update-video/${video._id}`, formData, config);
         if(data.data){
           setLoading(false);
           toast.success("Video details updated");

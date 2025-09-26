@@ -35,7 +35,7 @@ function ChannelPage() {
                 setUpdateLoading(true);
                 const config = {withCredentials:true, headers:{'Content-Type':'multipart/form-data'}};
   
-            const {data} = await axios.patch("/api/v1/users/update-coverimage", {coverImage}, config);  
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/users/update-coverimage`, {coverImage}, config);  
             
             if(data.data){
               setCoverImage("");
@@ -58,7 +58,7 @@ function ChannelPage() {
                 setUpdateLoading(true);
                 const config = {withCredentials:true, headers:{'Content-Type':'multipart/form-data'}};
   
-            const {data} = await axios.patch("/api/v1/users/update-avatar", {avatar}, config);  
+            const {data} = await axios.patch(`${import.meta.env.VITE_API_URL}/api/v1/users/update-avatar`, {avatar}, config);  
             
             if(data.data){
               setAvatar("");
@@ -79,7 +79,7 @@ function ChannelPage() {
          setDataLoading(true);
          setError("");
         const encodedName = encodeURIComponent(username);
-        const {data} = await axios.get(`/api/v1/users/c/${encodedName}`);
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/c/${encodedName}`);
         setChannelData(data.data);
          setIsSubscribe(data.data?.isSubscribed);
         setDataLoading(false);
@@ -105,7 +105,7 @@ function ChannelPage() {
              else if(isSubscribe===true){
               setIsSubscribe(false);
              }
-            const {data} = await axios.post(`/api/v1/subscription/subscribe/${channelData._id}`);
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${channelData._id}`);
             
           } catch (error) {
             

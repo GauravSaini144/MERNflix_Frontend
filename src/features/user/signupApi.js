@@ -6,7 +6,7 @@ export const signup = (email, username, fullname, password, avatar, coverImage)=
   try {
     dispatch(signupRequest());
      const config = {withCredentials:true, headers:{'Content-Type':'multipart/form-data'}};
-     const data = await axios.post("/api/v1/users/register", {email, username, fullname, password, avatar,coverImage}, config);
+     const data = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/register`, {email, username, fullname, password, avatar,coverImage}, config);
      dispatch(signupSuccess(data.data));
      
   } catch (error) {
