@@ -7,8 +7,7 @@ import axios from 'axios';
 import ChannelVideoCard from './ChannelVideoCard';
 import { useRef } from 'react';
 import UpdateProfile from './UpdateProfile';
-// import UpdatePassword from './updatePassword';
-import UpdatePassword from './updatePassword';
+import UpdatePassword from './UpdatePassword';
 import Navbar from './Navbar';
 function ChannelPage() {
     const {username} = useParams();
