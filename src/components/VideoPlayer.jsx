@@ -45,7 +45,7 @@ function VideoPlayer() {
         
         
         try {
-            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/videos/video/${videoId}`);
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/videos/video/${videoId}`,{withCredentials:true});
             
             setVideo(data.data[0]);
             
@@ -95,7 +95,7 @@ function VideoPlayer() {
       
     try {
  
-      const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/comment/c/${videoId}`);
+      const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/comment/c/${videoId}`,{withCredentials:true});
       setCommentsArray(data.data);
 
     } catch (error) {
@@ -123,7 +123,7 @@ function VideoPlayer() {
          else if(isSubscribe===true){
           setIsSubscribe(false);
          }
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${video.owner._id}`);
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${video.owner._id}`, {withCredentials:true});
         
       } catch (error) {
         

@@ -19,9 +19,8 @@ function WatchLaterPage() {
        const getWatchLaterVideos =async()=>{
         try {
           setVideoLoading(true);
-           const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/watch-later/get-watch-later-video`);
+           const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/watch-later/get-watch-later-video`, {withCredentials:true});
            
-           console.log("Watch later videos", data.data);
            setVideos(data.data);
            setVideoLoading(false);
            setError(error.response?.data?.message);

@@ -15,7 +15,7 @@ function ChannelCard({channel}) {
              else if(isSubscribe===true){
               setIsSubscribe(false);
              }
-            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${channelId}`);
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${channelId}`,{withCredentials:true});
             
           } catch (error) {
             

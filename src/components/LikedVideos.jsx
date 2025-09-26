@@ -16,7 +16,7 @@ function LikedVideos() {
        const getLikedVideos =async()=>{
         try {
           setVideoLoading(true);
-           const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/like/liked-videos`);
+           const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/like/liked-videos`, {withCredentials:true});
            
            setVideos(data.data);
            setVideoLoading(false);

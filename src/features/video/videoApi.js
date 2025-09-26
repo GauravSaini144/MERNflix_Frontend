@@ -20,7 +20,7 @@ export const getFeedVideos = () =>async(dispatch)=>{
 export const getSearchVideo = (search) =>async(dispatch)=>{
     try {
         dispatch(getVideosRequest());
-        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/videos/videos?query=${search}`);
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/videos/videos?query=${search}`, {withCredentials:true});
       dispatch(getVideosSuccess(data.data));
         
         

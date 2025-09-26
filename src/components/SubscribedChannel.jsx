@@ -13,7 +13,7 @@ function SubscribedChannel() {
      const getChannels=async()=>{
         try {
             setChannelLoading(true);
-            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribed`);
+            const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribed`, {withCredentials:true});
             
             setChannels(data.data);
             setChannelLoading(false);

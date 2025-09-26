@@ -79,7 +79,7 @@ function ChannelPage() {
          setDataLoading(true);
          setError("");
         const encodedName = encodeURIComponent(username);
-        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/c/${encodedName}`);
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/users/c/${encodedName}`,{withCredentials:true});
         setChannelData(data.data);
          setIsSubscribe(data.data?.isSubscribed);
         setDataLoading(false);
@@ -105,7 +105,7 @@ function ChannelPage() {
              else if(isSubscribe===true){
               setIsSubscribe(false);
              }
-            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${channelData._id}`);
+            const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/subscription/subscribe/${channelData._id}`, {withCredentials:true});
             
           } catch (error) {
             
