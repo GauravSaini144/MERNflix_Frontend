@@ -22,9 +22,9 @@ export const loginUser = (identifier, password)=>async(dispatch)=>{
 export const logoutUser = ()=>async(dispatch)=>{
     try {
          dispatch(logoutUserRequest());
-         const config={withCredentials:true, headers:{'Content-Type':'application/json'}}
+         const config={withCredentials:true}
 
-        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/logout`, config);
+        const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/users/logout`,{}, config);
          dispatch(logoutUserSuccess());
     } catch (error) {
         console.log(error);
