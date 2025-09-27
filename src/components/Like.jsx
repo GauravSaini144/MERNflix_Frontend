@@ -13,8 +13,8 @@ function Like({videoId}) {
       try {
         
         
-        const config = {withCredentials:true, headers:{'Content-Type':'application/json'}};
-        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/like/like/${videoId}`);
+        const config = {withCredentials:true};
+        const {data} = await axios.get(`${import.meta.env.VITE_API_URL}/api/v1/like/like/${videoId}`, config);
         setIsLiked(data.data.isLikedByMe);
         setLikes(data.data.totalLikes);
       } catch (error) {
@@ -44,7 +44,7 @@ function Like({videoId}) {
       }
      const config = {withCredentials:true, headers:{'Content-Type':'application/json'}};
 
-      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/like/like/${videoId}`,config);
+      const {data} = await axios.post(`${import.meta.env.VITE_API_URL}/api/v1/like/like/${videoId}`,{},config);
       
       
     }
