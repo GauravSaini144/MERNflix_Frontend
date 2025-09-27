@@ -10,7 +10,7 @@ function DeleteVideo({setIsUpdated, setIsDelete, videoId, setIsEdit}) {
 
   try {
     setLoading(true);
-    const config = {withCredentials:true, headers:{'Content-Type':'application/json'}};
+    const config = {withCredentials:true};
 
     const {data} = await axios.delete(`${import.meta.env.VITE_API_URL}/api/v1/videos/delete-video/${videoId}`, {}, config);
     setLoading(false);
